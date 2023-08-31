@@ -7,9 +7,11 @@ import thunk from "redux-thunk";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 import authReducer from "./auth/reducer";
+import userReducer from "./user/reducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  user: userReducer,
 });
 
 const configureStore = () => {

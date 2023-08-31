@@ -2,7 +2,11 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { getAuth } from "firebase/auth";
 import store from "./redux/store";
-import { loginSuccess, setAuthentication } from "./redux/auth/actions";
+import {
+  loginSuccess,
+  setAuthError,
+  setAuthentication,
+} from "./redux/auth/actions";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -35,7 +39,7 @@ export const tokenListener = () => {
         );
       }
     } catch (error: any) {
-      return console.error(error);
+      store.dispatch(setAuthError(error));
     }
   });
 };
